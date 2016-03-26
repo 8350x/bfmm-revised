@@ -1,15 +1,22 @@
-#!/usr/local/bin/php
-<?php
+﻿<?php
 header('Content-Type: text/plain; charset=utf-8');
-    require_once('twitteroauth/autoload.php');
-    require_once('twitteroauth/src/TwitterOAuth.php');
-    require_once(dirname(__FILE__) . '/config.php');
-    use Abraham\TwitterOAuth\TwitterOAuth;
 
-    try {
+// ライブラリを読み込む
+require "twitteroauth/autoload.php";
+use Abraham\TwitterOAuth\TwitterOAuth;
+ 
+// アプリケーション登録時に控えておいた項目をそれぞれ入力
+$consumerKey = "MDIqYbuXFNOYDZl7zF25gn5t0";
+$consumerSecret = "4eLkTzAkbWwMDlSta624gaeSdBr00rMtQ5aeFPuSCTIHPInz91";
+$accessToken = "712633619899031552-bCHgR98V6L2fpC9jiGc9CB0oWIr7izf";
+$accessTokenSecret = "krVgNdb44dWH8bTMfftHqi6B5imYLOa3nUgxU8NDFX2mE";
+
+try {
     
     // TwistOAuthのインスタンスを生成
-    $to = new TwitterOAuth(consumer_key, consumer_secret, access_token, access_token_secret);
+    $to = new TwistOAuth($ck, $cs, $at, $as);
+    
+    // 検索パラメータ
     $params = array(
         'lang'  => 'ja',            // 言語
         'q'     => '#bfmm', // 検索ワード
